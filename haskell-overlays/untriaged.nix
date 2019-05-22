@@ -14,8 +14,9 @@ self: super: {
   mmorph = doJailbreak super.mmorph;
   async = self.callHackage "async" "2.2.1" {};
   lifted-async = self.callHackage "lifted-async" "0.10.0.2" {};
-  hinotify = self.callHackage "hinotify" "0.3.10" {};
-  fsnotify = self.callHackage "fsnotify" "0.3.0.1" {};
+  system-fileio = dontCheck super.system-fileio;
+  hinotify = dontCheck (self.callHackage "hinotify" "0.3.10" {});
+  fsnotify = dontCheck (self.callHackage "fsnotify" "0.3.0.1" {});
 
   # These take over an hour to run, each
   cryptonite = dontCheck super.cryptonite;
