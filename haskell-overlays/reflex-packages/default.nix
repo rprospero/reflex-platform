@@ -34,9 +34,9 @@ in
   reflex-todomvc = self.callPackage self._dep.reflex-todomvc {};
   reflex-aeson-orphans = self.callCabal2nix "reflex-aeson-orphans" self._dep.reflex-aeson-orphans {};
   reflex-dom = addReflexOptimizerFlag reflexDom.reflex-dom;
-  reflex-dom-core = appendConfigureFlags
+  reflex-dom-core = dontCheck (appendConfigureFlags
     (addReflexOptimizerFlag reflexDom.reflex-dom-core)
-    (lib.optional enableLibraryProfiling "-fprofile-reflex");
+    (lib.optional enableLibraryProfiling "-fprofile-reflex"));
   chrome-test-utils = reflexDom.chrome-test-utils;
 
   ##
